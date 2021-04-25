@@ -1,0 +1,58 @@
+1- Add Single Product
+
+curl --location --request POST 'http://localhost:8080/addProduct' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Earphone",
+    "quantity": 10,
+    "price": 4200.0
+}'
+
+2- Add List of Product
+
+curl --location --request POST 'http://localhost:8080/addProducts' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+    {
+        "name": "laptop",
+        "quantity": 15,
+        "price": 21000
+    },
+    {
+        "name": "pen",
+        "quantity": 11,
+        "price": 100
+    },
+    {
+        "name": "phone",
+        "quantity": 12,
+        "price": 1400
+    }
+]'
+
+3- Get All Products
+
+curl --location --request GET 'http://localhost:8080/getAllproducts'
+
+4- Get Product by Id
+
+curl --location --request GET 'http://localhost:8080/getProductById/2'
+
+5- Get Product by Name
+
+curl --location --request GET 'http://localhost:8080/getProductByName/phone'
+
+6- Update Product
+
+curl --location --request PUT 'http://localhost:8080/updateProduct' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": 4,
+    "name": "i-phone",
+    "quantity": 1,
+    "price": 49500.0
+}'
+
+7- Delete Product
+
+curl --location --request DELETE 'http://localhost:8080/delete/3'

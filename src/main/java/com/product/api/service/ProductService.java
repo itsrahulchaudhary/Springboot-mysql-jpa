@@ -3,10 +3,12 @@ package com.product.api.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.product.api.entity.Product;
 import com.product.api.repository.ProductRepository;
 
+@Service
 public class ProductService {
 	
 	@Autowired
@@ -31,4 +33,18 @@ public class ProductService {
 	public Product getProductByName(String name) {
 		return productRepository.findByName(name);
 	}
+	
+	public String deleteProduct(int id) {
+		productRepository.deleteById(id);
+		return "Product deleted successfully : "+id;
+	}
+	
+	public Product updateProduct(Product product) {
+		 Product existingProduct = productRepository.findById(product.getId()).orElse(null);
+		 existingProduct.setName(product.getName());
+		 existingProduct.setPrice(product.getPrice());
+		 existingProduct.setQuantity(product.getQuantity());
+		 return productRepository.save(existingProduct);
+	}
 }
+
